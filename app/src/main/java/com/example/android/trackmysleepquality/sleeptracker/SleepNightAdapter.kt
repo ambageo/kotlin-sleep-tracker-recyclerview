@@ -44,9 +44,9 @@ class SleepNightAdapter : ListAdapter<SleepNight,
         : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SleepNight) {
-            // TODO (02) Replace the code below with a single binding to the SleepNight item,
+            // TODO (02) Replace the code below with a single binding to the SleepNight item, //DONE
             // followed by executePendingBindings().
-            val res = itemView.context.resources
+           /* val res = itemView.context.resources
 
             binding.sleepLength.text = convertDurationToFormatted(item.startTimeMilli, item.endTimeMilli, res)
             binding.qualityString.text = convertNumericQualityToString(item.sleepQuality, res)
@@ -58,7 +58,11 @@ class SleepNightAdapter : ListAdapter<SleepNight,
                 4 -> R.drawable.ic_sleep_4
                 5 -> R.drawable.ic_sleep_5
                 else -> R.drawable.ic_sleep_active
-            })
+            })*/
+
+            // sleep is the name of the binding object, as we named it in the xml file
+            binding.sleep = item
+
         }
 
         companion object {
