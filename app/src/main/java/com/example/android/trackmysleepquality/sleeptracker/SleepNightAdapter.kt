@@ -24,15 +24,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.trackmysleepquality.database.SleepNight
 import com.example.android.trackmysleepquality.databinding.ListItemSleepNightBinding
 
-// TODO (04) Add a SleepNightListener reference to the SleepNightAdapter class declaration.
-class SleepNightAdapter : ListAdapter<SleepNight,
+// TODO (04) Add a SleepNightListener reference to the SleepNightAdapter class declaration. //DONE
+class SleepNightAdapter(val clickListener: SleepNightListener) : ListAdapter<SleepNight,
         SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
 
-        // TODO (05) Add clickListener parameter to holder.bind().
-        holder.bind(item)
+        // TODO (05) Add clickListener parameter to holder.bind(). //DONE
+        holder.bind(clickListener, item!!)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,10 +42,11 @@ class SleepNightAdapter : ListAdapter<SleepNight,
     class ViewHolder private constructor(val binding: ListItemSleepNightBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
-        // TODO (06) Add a clickListener parameter to the bind() function,
+        // TODO (06) Add a clickListener parameter to the bind() function, //DONE
         // and add a binding for the clickListener.
-        fun bind(item: SleepNight) {
+        fun bind(clickListener: SleepNightListener, item: SleepNight) {
             binding.sleep = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -76,4 +77,7 @@ class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>() {
     }
 }
 
-// TODO (01) Create a new class called SleepNightListener.
+// TODO (01) Create a new class called SleepNightListener. //DONE
+class SleepNightListener( val clickListener: (sleepId: Long) -> Unit){
+    fun onClick(night:SleepNight) = clickListener(night.nightId)
+}
