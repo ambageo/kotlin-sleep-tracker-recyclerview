@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.database.SleepDatabase
 import com.example.android.trackmysleepquality.databinding.FragmentSleepTrackerBinding
@@ -97,7 +98,10 @@ class SleepTrackerFragment : Fragment() {
             }
         })
 
-        // TODO (02) Create a GridLayoutManager spanning 3 columns and bind it to the RecyclerView.
+        // TODO (02) Create a GridLayoutManager spanning 3 columns and bind it to the RecyclerView. //DONE
+        // Here it is better to provide the activity rather than the context, which can be null
+        val layoutManager = GridLayoutManager(activity, 3)
+        binding.sleepList.layoutManager = layoutManager
 
         val adapter = SleepNightAdapter()
         binding.sleepList.adapter = adapter
