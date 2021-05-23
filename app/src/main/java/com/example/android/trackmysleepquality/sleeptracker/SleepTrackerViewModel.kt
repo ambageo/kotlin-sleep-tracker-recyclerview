@@ -132,10 +132,12 @@ class SleepTrackerViewModel(
         _navigateToSleepQuality.value = null
     }
 
+    // TODO (03) Add a handler for the click event //DONE
     private val _navigateToSleepDataQuality = MutableLiveData<Long>()
     val navigateToSleepDataQuality
         get() = _navigateToSleepDataQuality
 
+    // TODO (04) Define method to initiate and complete navigation //DONE
     fun onSleepNightClicked(id: Long) {
         _navigateToSleepDataQuality.value = id
     }
